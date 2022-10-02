@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://theming/theme.tres" type="Theme" id=1]
+[ext_resource path="res://save.gd" type="Script" id=2]
+[ext_resource path="res://load.gd" type="Script" id=3]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="ButtonSave" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 172.0
+margin_bottom = 86.0
+theme = ExtResource( 1 )
+text = "Save"
+script = ExtResource( 2 )
+
+[node name="ButtonLoad" type="Button" parent="."]
+margin_left = 177.0
+margin_top = 32.0
+margin_right = 285.0
+margin_bottom = 86.0
+theme = ExtResource( 1 )
+text = "Load"
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="ButtonSave" to="ButtonSave" method="_on_ButtonSave_pressed"]
+[connection signal="pressed" from="ButtonLoad" to="ButtonLoad" method="_on_ButtonLoad_pressed"]
