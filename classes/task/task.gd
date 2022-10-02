@@ -32,7 +32,7 @@ func _process(_delta):
 
 
 func _on_ButtonAdd_pressed():
-	var inst = load("res://task.tscn").instance()
+	var inst = load("res://classes/task/task.tscn").instance()
 	anchor.add_child(inst)
 	arrange_children()
 
@@ -43,14 +43,17 @@ func arrange_children():
 	var num_of_children = children.size()
 	for i in range(num_of_children):
 		var angle
+		var branch_distance
 		if parent.name == "ChildAnchor":
 			ang_range = PI / 2
 			var middle: float = (num_of_children - 1.0) / 2.0
 			var offset: float = (i - middle) * 2 / max(num_of_children - 1.0, 1)
 			angle = branch_angle + (offset * ang_range / 2)
+			branch_distance = distance
 		else:
 			angle = i * TAU / num_of_children
-		children[i].rect_position = Vector2(cos(angle), sin(angle)) * (distance + num_of_children * 26)
+			branch_distance = distance * 3 / 4
+		children[i].rect_position = Vector2(cos(angle), sin(angle)) * (branch_distance + num_of_children * 26)
 		children[i].branch_angle = angle
 		children[i].rect_scale = Vector2.ONE * 0.875
 		children[i].true_scale = true_scale * 0.875
@@ -98,6 +101,8 @@ func surrender_data() -> String:
 
 
 func set_title(text) -> void:
+	if !is_inside_tree():
+		yield(self, "ready")
 	title.text = text
 
 

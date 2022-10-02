@@ -1,34 +1,34 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://classes/task/task.gd" type="Script" id=1]
-[ext_resource path="res://theming/theme.tres" type="Theme" id=2]
+[ext_resource path="res://theming/themes/dark/theme_dark.tres" type="Theme" id=2]
 
 [node name="Task" type="Panel"]
 margin_right = 168.0
 margin_bottom = 120.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="ButtonArchive" type="Button" parent="."]
-margin_left = 12.0
-margin_top = 50.0
-margin_right = 76.0
-margin_bottom = 77.0
-theme = ExtResource( 2 )
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 92.0
+margin_bottom = 74.0
 text = "Archive"
 
 [node name="ButtonAdd" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -33.0
-margin_right = 107.0
-margin_bottom = -13.0
-theme = ExtResource( 2 )
+margin_left = 8.0
+margin_top = -36.0
+margin_right = 144.0
+margin_bottom = -10.0
 text = "Add sub-task"
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -1
 points = PoolVector2Array( 0, 0, 0, 0 )
+default_color = Color( 0, 0.12549, 0.0627451, 1 )
 
 [node name="Title" type="LineEdit" parent="."]
 anchor_right = 1.0
@@ -36,6 +36,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 theme = ExtResource( 2 )
+text = "aaaa"
 
 [node name="ChildAnchor" type="Control" parent="."]
 mouse_filter = 2

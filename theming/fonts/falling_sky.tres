@@ -3,8 +3,7 @@
 [ext_resource path="res://theming/fonts/falling_sky.otf" type="DynamicFontData" id=1]
 
 [resource]
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
+size = 20
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
