@@ -36,7 +36,6 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 theme = ExtResource( 2 )
-text = "aaaa"
 
 [node name="ChildAnchor" type="Control" parent="."]
 mouse_filter = 2

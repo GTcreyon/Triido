@@ -24,6 +24,10 @@ config/name="tree"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/handheld/orientation="sensor"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

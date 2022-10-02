@@ -38,3 +38,9 @@ func slide_to(destination: Vector2, target_zoom: Vector2) -> void:
 
 func ease_out(n: float) -> float:
 	return sin((n * PI) / 2)
+
+
+# Move the camera when the screen is dragged
+func _input(event):
+	if event is InputEventScreenDrag:
+		position -= event.relative
