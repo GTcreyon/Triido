@@ -109,7 +109,8 @@ func set_title(text) -> void:
 func _on_ButtonArchive_pressed():
 	queue_free()
 	parent.remove_child(self)
-	super_parent.arrange_children()
+	if parent.name == "ChildAnchor":
+		super_parent.arrange_children()
 
 
 func _on_Task_gui_input(event):

@@ -1,28 +1,67 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://theming/themes/dark/theme_dark.tres" type="Theme" id=1]
 [ext_resource path="res://save.gd" type="Script" id=2]
 [ext_resource path="res://load.gd" type="Script" id=3]
+[ext_resource path="res://sync_controller.gd" type="Script" id=4]
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="ButtonSave" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 32.0
-margin_right = 172.0
-margin_bottom = 86.0
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_right = 260.0
+margin_bottom = 64.0
+
+[node name="ButtonSave" type="Button" parent="Control/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
 theme = ExtResource( 1 )
 text = "Save"
 script = ExtResource( 2 )
 
-[node name="ButtonLoad" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 32.0
-margin_right = 285.0
-margin_bottom = 86.0
+[node name="ButtonLoad" type="Button" parent="Control/HBoxContainer"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
 theme = ExtResource( 1 )
 text = "Load"
 script = ExtResource( 3 )
 
-[connection signal="pressed" from="ButtonSave" to="ButtonSave" method="_on_ButtonSave_pressed"]
-[connection signal="pressed" from="ButtonLoad" to="ButtonLoad" method="_on_ButtonLoad_pressed"]
+[node name="ButtonHost" type="Button" parent="Control/HBoxContainer"]
+margin_left = 264.0
+margin_right = 392.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+theme = ExtResource( 1 )
+text = "Host"
+
+[node name="ButtonConnect" type="Button" parent="Control/HBoxContainer"]
+margin_left = 396.0
+margin_right = 524.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+theme = ExtResource( 1 )
+text = "Join"
+
+[node name="ButtonSync" type="Button" parent="Control/HBoxContainer"]
+margin_left = 528.0
+margin_right = 656.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 64 )
+theme = ExtResource( 1 )
+text = "Sync"
+
+[node name="SyncController" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="Control/HBoxContainer/ButtonSave" to="Control/HBoxContainer/ButtonSave" method="_on_ButtonSave_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonLoad" to="Control/HBoxContainer/ButtonLoad" method="_on_ButtonLoad_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonHost" to="SyncController" method="_on_ButtonHost_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonConnect" to="SyncController" method="_on_ButtonConnect_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonSync" to="SyncController" method="_on_ButtonSync_pressed"]

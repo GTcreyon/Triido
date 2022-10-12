@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://theming/themes/dark/theme_dark.tres" type="Theme" id=1]
 [ext_resource path="res://classes/camera.gd" type="Script" id=2]
 [ext_resource path="res://classes/gui/gui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main.gd" type="Script" id=4]
 
 [node name="Main" type="Control"]
 theme = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
