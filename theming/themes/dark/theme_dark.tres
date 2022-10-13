@@ -1,12 +1,19 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
 [ext_resource path="res://theming/fonts/falling_sky.tres" type="DynamicFont" id=1]
 [ext_resource path="res://theming/themes/dark/button_dark.tres" type="StyleBox" id=2]
 [ext_resource path="res://theming/themes/dark/panel_dark.tres" type="StyleBox" id=3]
 [ext_resource path="res://theming/themes/dark/line_edit_dark.tres" type="StyleBox" id=4]
+[ext_resource path="res://theming/themes/dark/button_pressed_dark.tres" type="StyleBox" id=5]
+[ext_resource path="res://theming/themes/dark/button_hover_dark.tres" type="StyleBox" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [resource]
 default_font = ExtResource( 1 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = ExtResource( 6 )
 Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 5 )
 LineEdit/styles/normal = ExtResource( 4 )
 Panel/styles/panel = ExtResource( 3 )
