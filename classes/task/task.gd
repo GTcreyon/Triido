@@ -29,6 +29,17 @@ func _process(_delta):
 	if connector != null:
 		connector.points[0] = rect_size / 2
 		connector.points[1] = -rect_position / rect_scale.x + super_parent.rect_size / 2
+	_update_mouse_filter()
+
+
+func _update_mouse_filter():
+	if modulate.a < 1:
+		mouse_filter = MOUSE_FILTER_IGNORE
+	else:
+		mouse_filter = MOUSE_FILTER_STOP
+	for child in get_children():
+		if child.is_class("Control"):
+			child.mouse_filter = mouse_filter
 
 
 func _on_ButtonAdd_pressed():
@@ -114,7 +125,7 @@ func _on_ButtonArchive_pressed():
 
 
 func _on_Task_gui_input(event):
-	if event is InputEventMouseButton && modulate.a >= 1:
+	if event is InputEventMouseButton:
 		$"/root/Main/Camera".slide_to(rect_global_position + (rect_size / 2) * true_scale, Vector2.ONE * true_scale)
 		show_branch()
 		hide_branch_higher()

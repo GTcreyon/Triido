@@ -3,6 +3,7 @@ extends Control
 func _process(_delta):
 	_update_safe_area()
 
+
 func _update_safe_area():
 	var safe_area: Rect2 = OS.get_window_safe_area()
 	var full_area = OS.window_size
