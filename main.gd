@@ -25,3 +25,31 @@ func load_tree(data: String):
 			title += chr
 		i += 1
 	$"/root/Main/Task".arrange_children()
+	randomize()
+	_reminder()
+
+
+func _reminder():
+	OS.execute("notify-send", [_get_leaf_text()])
+	$Ding.play()
+	var timer = get_tree().create_timer(2 * 60)
+	timer.connect("timeout", self, "_reminder")
+
+
+func _get_leaf_text():
+	var leaves = _get_leaves()
+	return leaves[rand_range(0, leaves.size())].get_task_path()
+
+
+func _get_leaves():
+	var root = $"/root/Main/Task"
+	var queue = [root]
+	var visited = [root]
+	var node
+	while queue.size() > 0:
+		node = queue.pop_front()
+		for neighbor in node.get_child_tasks():
+			if !visited.has(neighbor):
+				queue.append(neighbor)
+				visited.append(neighbor)
+	return visited
