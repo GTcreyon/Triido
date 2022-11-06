@@ -30,7 +30,9 @@ func load_tree(data: String):
 
 
 func _reminder():
-	OS.execute("notify-send", [_get_leaf_text()])
+	print(OS.get_name())
+	if OS.get_name() == "X11":
+		OS.execute("notify-send", [_get_leaf_text(), "-e"])
 	$Ding.play()
 	var timer = get_tree().create_timer(2 * 60)
 	timer.connect("timeout", self, "_reminder")
@@ -45,11 +47,16 @@ func _get_leaves():
 	var root = $"/root/Main/Task"
 	var queue = [root]
 	var visited = [root]
+	var leaves = []
 	var node
 	while queue.size() > 0:
 		node = queue.pop_front()
-		for neighbor in node.get_child_tasks():
-			if !visited.has(neighbor):
-				queue.append(neighbor)
-				visited.append(neighbor)
-	return visited
+		var neighbors: Array = node.get_child_tasks()
+		if neighbors.size() > 0:
+			for neighbor in neighbors:
+				if !visited.has(neighbor):
+					queue.append(neighbor)
+					visited.append(neighbor)
+		else:
+			leaves.append(node)
+	return leaves
